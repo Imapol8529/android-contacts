@@ -13,7 +13,7 @@ public class BaseListDiffCallback<T extends ListDiffCallback<?>> extends DiffUti
 
     @Override
     public boolean areContentsTheSame(@NonNull T oldItem, @NonNull T newItem) {
-        return oldItem.equals(newItem);
+        return oldItem.itemEquals(newItem);
     }
 
     @Nullable
