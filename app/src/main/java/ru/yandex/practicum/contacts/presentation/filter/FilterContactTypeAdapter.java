@@ -5,11 +5,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.AdapterListUpdateCallback;
 import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.AsyncListDiffer;
-import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -18,12 +16,8 @@ import java.util.function.Consumer;
 import ru.yandex.practicum.contacts.databinding.ItemFilterBinding;
 import ru.yandex.practicum.contacts.model.ContactType;
 import ru.yandex.practicum.contacts.presentation.base.BaseListDiffCallback;
-import ru.yandex.practicum.contacts.presentation.base.ListDiffCallback;
 import ru.yandex.practicum.contacts.presentation.filter.model.FilterContactType;
 import ru.yandex.practicum.contacts.presentation.filter.model.FilterContactTypeUi;
-import ru.yandex.practicum.contacts.presentation.sort.SortTypeAdapter;
-import ru.yandex.practicum.contacts.presentation.sort.SortTypeUI;
-import ru.yandex.practicum.contacts.presentation.sort.model.SortType;
 import ru.yandex.practicum.contacts.utils.model.ContactTypeUtils;
 import ru.yandex.practicum.contacts.utils.model.FilterContactTypeUtils;
 
@@ -80,7 +74,7 @@ public class FilterContactTypeAdapter extends RecyclerView.Adapter<FilterContact
             final int sortResId = FilterContactTypeUtils.getStringRes(data.getContactType());
             binding.text.setText(sortResId);
             binding.selected.setChecked(data.isSelected());
-            if (data.getContactType() == FilterContactType.ALL){
+            if (data.getContactType() == FilterContactType.ALL) {
                 binding.logo.setVisibility(View.GONE);
             } else {
                 final ContactType contactType = FilterContactTypeUtils.toContactType(data.getContactType());
@@ -90,23 +84,4 @@ public class FilterContactTypeAdapter extends RecyclerView.Adapter<FilterContact
             }
         }
     }
-
-//    static class ListDiffCallback extends DiffUtil.ItemCallback<FilterContactTypeUi> {
-//
-//        @OverrideK
-//        public boolean areItemsTheSame(@NonNull FilterContactTypeUi oldItem, @NonNull FilterContactTypeUi newItem) {
-//            return oldItem.getContactType() == newItem.getContactType();
-//        }
-//
-//        @Override
-//        public boolean areContentsTheSame(@NonNull FilterContactTypeUi oldItem, @NonNull FilterContactTypeUi newItem) {
-//            return oldItem.equals(newItem);
-//        }
-//
-//        @Nullable
-//        @Override
-//        public Object getChangePayload(@NonNull FilterContactTypeUi oldItem, @NonNull FilterContactTypeUi newItem) {
-//            return newItem;
-//        }
-//    }
 }
